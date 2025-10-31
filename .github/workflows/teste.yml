@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -16,5 +16,11 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Executar script
+      - name: Instalar dependências
+        run: pip install pytest
+
+      - name: Executar script (opcional)
         run: python main.py
+
+      - name: Executar testes
+        run: pytest -v
